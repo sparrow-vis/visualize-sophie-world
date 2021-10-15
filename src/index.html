@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sophie's World</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body,
+      .container {
+        background: #ddd;
+      }
+
+      header {
+        height: 56px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        background: white;
+        width: 100%;
+        line-height: 56px;
+        padding-left: 0.5em;
+      }
+
+      .chart {
+        border-radius: 5px;
+        margin-left: 16px;
+        margin-top: 16px;
+        background: white;
+        float: left;
+      }
+
+      .container {
+        margin-top: 56px;
+        height: calc(100% - 56px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sophie's World</h1>
+    </header>
+    <section class="container">
+      <div class="chart" id="bar"></div>
+      <div class="chart" id="scatter"></div>
+      <div class="chart" id="pie"></div>
+      <div class="chart" id="line"></div>
+      <div class="chart" id="graph"></div>
+      <div class="chart" id="map"></div>
+      <div class="chart" id="template"></div>
+      <div class="chart" id="art"></div>
+    </section>
+  </body>
+  <script type="module">
+    import { art } from "./charts/art.js";
+    import { bar } from "./charts/bar.js";
+    import { graph } from "./charts/graph.js";
+    import { map } from "./charts/map.js";
+    import { pie } from "./charts/pie.js";
+    import { line } from "./charts/line.js";
+    import { scatter } from "./charts/scatter.js";
+    import { template } from "./charts/template.js";
+
+    const charts = [
+      { f: art, id: "art", data: [] },
+      { f: bar, id: "bar", data: [] },
+      { f: graph, id: "graph", data: [] },
+      { f: map, id: "map", data: [] },
+      { f: line, id: "line", data: [] },
+      { f: scatter, id: "scatter", data: [] },
+      { f: template, id: "template", data: [] },
+      { f: pie, id: "pie", data: [] },
+    ];
+
+    for (const { f, id, data } of charts) {
+      f(Container(id), size(id), data);
+    }
+
+    function Container(id) {
+      const container = document.getElementById(id);
+      const padding = 24;
+      const height = (window.innerHeight - 56 - padding * 2) / 2;
+      const width = (window.innerWidth - padding * 2) / 2;
+      container.style.width = width + "px";
+      container.style.height = height + "px";
+      return container;
+    }
+
+    function size(id) {
+      const container = document.getElementById(id);
+      const { width, height } = container.style;
+      return { width: parseFloat(width), height: parseFloat(height) };
+    }
+  </script>
+</html>
