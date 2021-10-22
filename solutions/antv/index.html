@@ -46,39 +46,27 @@
       <h1>Sophie's World</h1>
     </header>
     <section class="container">
-      <div class="chart" id="bar"></div>
-      <div class="chart" id="scatter"></div>
-      <div class="chart" id="pie"></div>
-      <div class="chart" id="line"></div>
-      <div class="chart" id="graph"></div>
-      <div class="chart" id="map"></div>
-      <div class="chart" id="template"></div>
-      <div class="chart" id="art"></div>
+      <div class="chart" id="c1"></div>
+      <div class="chart" id="c2"></div>
+      <div class="chart" id="c3"></div>
+      <div class="chart" id="c4"></div>
     </section>
   </body>
   <script type="module">
-    import { art } from "./charts/art.js";
-    import { bar } from "./charts/bar.js";
-    import { graph } from "./charts/graph.js";
-    import { map } from "./charts/map.js";
-    import { pie } from "./charts/pie.js";
-    import { line } from "./charts/line.js";
-    import { scatter } from "./charts/scatter.js";
-    import { template } from "./charts/template.js";
+    import { circlePacking } from "./charts/circle-packing.js";
+    import { forceGraph } from "./charts/force-graph.js";
+    import { geoMap } from "./charts/geo-map.js";
+    import { wordCloud } from "./charts/word-cloud.js";
 
     const charts = [
-      { f: art, id: "art", data: [] },
-      { f: bar, id: "bar", data: [] },
-      { f: graph, id: "graph", data: [] },
-      { f: map, id: "map", data: [] },
-      { f: line, id: "line", data: [] },
-      { f: scatter, id: "scatter", data: [] },
-      { f: template, id: "template", data: [] },
-      { f: pie, id: "pie", data: [] },
+      { render: wordCloud, id: "c1", data: [] },
+      { render: circlePacking, id: "c2", data: [] },
+      { render: forceGraph, id: "c3", data: [] },
+      { render: geoMap, id: "c4", data: [] },
     ];
 
-    for (const { f, id, data } of charts) {
-      f(Container(id), size(id), data);
+    for (const { render, id, data } of charts) {
+      render(Container(id), size(id), data);
     }
 
     function Container(id) {
