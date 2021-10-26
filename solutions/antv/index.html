@@ -33,6 +33,7 @@
         margin-top: 16px;
         background: white;
         float: left;
+        position: relative;
       }
 
       .container {
@@ -53,6 +54,8 @@
     </section>
   </body>
   <script type="module">
+    import countrys from "./data/countrys.js";
+    import philosophers from "./data/philosophers.js";
     import { circlePacking } from "./charts/circle-packing.js";
     import { forceGraph } from "./charts/force-graph.js";
     import { geoMap } from "./charts/geo-map.js";
@@ -62,7 +65,7 @@
       { render: wordCloud, id: "c1", data: [] },
       { render: circlePacking, id: "c2", data: [] },
       { render: forceGraph, id: "c3", data: [] },
-      { render: geoMap, id: "c4", data: [] },
+      { render: geoMap, id: "c4", data: { countrys, philosophers } },
     ];
 
     for (const { render, id, data } of charts) {
