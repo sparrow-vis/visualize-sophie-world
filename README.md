@@ -1,14 +1,16 @@
 # Visualize Sophie's World
 
 这里有小册子《可视化入门：从 0 到 1 开发一个基于图形语法的图表》的数据和代码等资源。
+
 ## 数据
 
-一共有四组数据：
+一共有五组数据：
 
 - [philosophers.json](./data/philosophers.json)
 - [questions.json](./data/questions.json)
 - [schools.json](./data/schools.json)
 - [relations.csv](./data/relations.csv)
+- [country.json](./data/country.json)
 
 ### philosophers.json
 
@@ -55,6 +57,10 @@
 | from | 边的另一个节点的 ID                                                                                                  | `number` |
 | to   | 边的一个节点的 ID                                                                                                    | `number` |
 | type | 边的种类：`0` 表示流派和哲学家，这个哲学家属于这个流派； `1` 问题和哲学家或者流派，这个哲学家或者流派回答了这个问题. | `0 or 1` |
+
+## country.json
+
+国家地理数据
 
 ## 代码
 
